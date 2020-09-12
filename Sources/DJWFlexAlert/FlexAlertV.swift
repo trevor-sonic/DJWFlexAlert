@@ -24,7 +24,7 @@ open class FlexAlertV: UIScrollView {
     let insideOffset:CGFloat = 12
     
     lazy var holderV = UIViewBuilder()
-        .bgColor(.darkGray)
+        .bgColor(FlexAlertConfig.backgroundColor)
         .round(16)
         .buildAndAdd(on: self)
     
@@ -34,12 +34,12 @@ open class FlexAlertV: UIScrollView {
 //        .buildAndAdd(on: holderV)
     
     
-    lazy var titleLabel:UILabel = UILabelBuilder(kind: UIFontBuilder.Kind.xlBold, text: "Popup Title")
+    public lazy var titleLabel:UILabel = UILabelBuilder(kind: UIFontBuilder.Kind.xlBold, text: "Popup Title")
         .align(.center)
         .buildAndAdd(on: holderV)
     
     lazy var contentV:UIView = UIViewBuilder()
-        .bgColor(.darkGray)
+        .bgColor(FlexAlertConfig.backgroundColor)
         .buildAndAdd(on: holderV)
     
     lazy var textV:UITextView = {
@@ -54,7 +54,7 @@ open class FlexAlertV: UIScrollView {
         tv.textAlignment = .center
         
         tv.font = UIFontBuilder.init(kind: UIFontBuilder.Kind.lRegular).build()
-        tv.textColor = .white
+        tv.textColor = FlexAlertConfig.defaultTextColor
         
         tv.snp.makeConstraints({ make in
             make.edges.equalTo(contentV)
@@ -67,7 +67,7 @@ open class FlexAlertV: UIScrollView {
         tf.delegate  = self
         tf.becomeFirstResponder()
         tf.font = UIFontBuilder.init(kind: UIFontBuilder.Kind.lRegular).build()
-        tf.textColor = .white
+        tf.textColor = FlexAlertConfig.defaultTextColor
         tf.snp.makeConstraints({ make in
             make.top.left.right.equalTo(contentV)
         })
@@ -75,10 +75,10 @@ open class FlexAlertV: UIScrollView {
         return tf
     }()
     
-    lazy var textLabel:UILabel = {
+    public lazy var textLabel:UILabel = {
         let lbl:UILabel = UILabelBuilder()
             .font(UIFontBuilder.init(kind: UIFontBuilder.Kind.lRegular).build())
-            .textColor(with: .white)
+            .textColor(with: FlexAlertConfig.defaultTextColor)
             .buildAndAdd(on: contentV)
     
         lbl.snp.makeConstraints({ make in
@@ -123,14 +123,14 @@ open class FlexAlertV: UIScrollView {
     
     func getButton(title:String, type:FlexAlertVC.ButtonType , onTap:@escaping ClosureBasic )->Bindable.Button {
         let button = Builder.BButton(title: title)
-            .tint(.white)
+            .tint(FlexAlertConfig.defaultTextColor)
             .font(UIFontBuilder.init(kind: UIFontBuilder.Kind.lRegular).build())
-            .border(1, color: .lightGray)
+            .border(1, color: FlexAlertConfig.seperatorColor)
             .bind { _ in onTap(); self.onClose() }
             .build()
         
         if type == .danger {
-            button.tintColor = .red
+            button.tintColor = FlexAlertConfig.dangerTextColor
             button.titleLabel?.font = UIFontBuilder.init(kind: UIFontBuilder.Kind.lBold).build()
         }
         if type == .strong {

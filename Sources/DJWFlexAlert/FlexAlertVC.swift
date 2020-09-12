@@ -15,12 +15,12 @@ import DJWCommon
 
 public class FlexAlertVC: UIViewController {
 
-    enum ButtonType{
+    public enum ButtonType{
         case normal, strong, danger
     }
     
     
-    var flexAlertV:FlexAlertV {return view as! FlexAlertV}
+    open var flexAlertV:FlexAlertV {return view as! FlexAlertV}
     
     open var onCloseCallback:()->Void = {print("⚠️ Implement onClose")}
     var keyboardSizeManager:KeyboardSizeManager?
@@ -66,7 +66,7 @@ public class FlexAlertVC: UIViewController {
     }
     deinit {
         print("deinit \(self.description)")
-        deregisterFromKeyboardNotifications()
+        unregisterFromKeyboardNotifications()
     }
 
     private func close(){
@@ -117,8 +117,8 @@ extension FlexAlertVC:KeyboardSizeManagerDelegate {
         keyboardSizeManager = KeyboardSizeManager()
         keyboardSizeManager?.delegate = self
     }
-    public func deregisterFromKeyboardNotifications(){
-        keyboardSizeManager?.deregisterFromKeyboardNotifications()
+    public func unregisterFromKeyboardNotifications(){
+        keyboardSizeManager?.unregisterFromKeyboardNotifications()
         keyboardSizeManager = nil
     }
     public func registerForKeyboardNotifications(){
@@ -128,46 +128,4 @@ extension FlexAlertVC:KeyboardSizeManagerDelegate {
     public func keyboardDidHide(notification: NSNotification) {}
 }
 
-extension Builder {
-    
-    /// Returns FlaexAlerVC
-    class FlexAlert{
-    
-        let fa:FlexAlertVC
-        
-        init(title:String) {
-            fa = FlexAlertVC()
-            fa.flexAlertV.titleLabel.text = title
-        }
-        
-        func addButton(title:String, type:FlexAlertVC.ButtonType, onTap:@escaping ClosureBasic)->Self{
-            let button = fa.getButton(title: title, type: type, onTap: onTap)
-            fa.buttons.append(button)
-            return self
-        }
-        func message(_ text:String)->Self{
-            fa.flexAlertV.textV.text = text
-            return self
-        }
-        func custom(ui:UIView)->Self{
-            fa.flexAlertV.setCustom(ui: ui)
-            return self
-        }
-        func textField(text:String)->Self{
-            fa.flexAlertV.textField.text = text
-            return self
-        }
-        func textLabel(text:String)->Self{
-            fa.flexAlertV.textLabel.text = text
-            return self
-        }
-        func onClose(done:@escaping ()->Void ) -> Self {
-            fa.onCloseCallback = done
-            return self
-        }
-        func done()->FlexAlertVC{
-            return fa
-        }
-    }
-}
 
