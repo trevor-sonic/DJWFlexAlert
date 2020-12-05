@@ -19,11 +19,11 @@ let package = Package(
             targets: ["DJWFlexAlert"]),
     ],
     dependencies: [
-        .package(url: "https://gitlab.com/trevorsonic/DJWCommon.git", from: "1.0.0"),
-        .package(url: "https://gitlab.com/trevorsonic/DJWBaseVC.git", from: "1.0.0"),
+        .package(url: "https://github.com/trevor-sonic/DJWCommon.git", from: "1.0.0"),
+        .package(url: "https://gitlhub.com/trevor-sonic/DJWBaseVC.git", from: "1.0.0"),
         .package(url: "https://gitlab.com/trevorsonic/DJWKeyboardTools.git", from: "1.0.0"),
-        .package(url: "https://gitlab.com/trevorsonic/DJWUIBuilder.git", from: "1.0.0"),
-        .package(url: "https://gitlab.com/trevorsonic/DJWBuilderNS.git", from: "1.0.0"),
+        .package(url: "https://github.com/trevor-sonic/DJWUIBuilder.git", from: "1.0.0"),
+        .package(url: "https://github.com/trevor-sonic/DJWBuilderNS.git", from: "1.0.0"),
         
         ///public
         .package(url: "https://github.com/SnapKit/SnapKit.git", from: "5.0.0"),
