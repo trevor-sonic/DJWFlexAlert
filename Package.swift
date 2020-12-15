@@ -21,7 +21,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/trevor-sonic/DJWCommon.git", from: "1.0.0"),
         .package(url: "https://github.com/trevor-sonic/DJWBaseVC.git", from: "1.0.0"),
-        .package(url: "https://gitlab.com/trevorsonic/DJWKeyboardTools.git", from: "1.0.0"),
+        .package(url: "https://github.com/trevor-sonic/DJWKeyboardTools.git", from: "1.0.0"),
         .package(url: "https://github.com/trevor-sonic/DJWUIBuilder.git", from: "1.0.0"),
         .package(url: "https://github.com/trevor-sonic/DJWBuilderNS.git", from: "1.0.0"),
         
