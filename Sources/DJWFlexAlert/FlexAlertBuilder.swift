@@ -28,6 +28,7 @@ public extension Builder {
         }
         public func message(_ text:String)->Self{
             fa.flexAlertV.textV.text = text
+            fa.flexAlertV.textV.isEditable = false
             return self
         }
         public func custom(ui:UIView)->Self{
