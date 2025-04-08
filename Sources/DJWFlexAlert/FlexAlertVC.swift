@@ -100,7 +100,7 @@ public class FlexAlertVC: UIViewController {
     }
     
     // MARK: - Transit vars
-    var buttons:[Bindable.Button]{
+    var buttons:[DBindable.Button]{
         set{
             flexAlertV.buttons = newValue
         }
@@ -108,7 +108,7 @@ public class FlexAlertVC: UIViewController {
             return flexAlertV.buttons
         }
     }
-    func getButton(title:String, type:FlexAlertVC.ButtonType , onTap:@escaping ClosureBasic )->Bindable.Button{
+    func getButton(title:String, type:FlexAlertVC.ButtonType , onTap:@escaping ClosureBasic )->DBindable.Button{
         return flexAlertV.getButton(title: title, type:type , onTap: onTap)
     }
 }

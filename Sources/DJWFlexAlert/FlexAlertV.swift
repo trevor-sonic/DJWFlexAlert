@@ -98,7 +98,7 @@ open class FlexAlertV: UIScrollView {
     /// to implement in VC
     var onClose:()->Void = {}
     
-    var buttons:[Bindable.Button] = []
+    var buttons:[DBindable.Button] = []
     
     enum AlertType{
         case portrait
@@ -121,7 +121,7 @@ open class FlexAlertV: UIScrollView {
         })
     }
     
-    func getButton(title:String, type:FlexAlertVC.ButtonType , onTap:@escaping ClosureBasic )->Bindable.Button {
+    func getButton(title:String, type:FlexAlertVC.ButtonType , onTap:@escaping ClosureBasic )->DBindable.Button {
         let button = Builder.BButton(title: title)
             .tint(FlexAlertConfig.defaultTextColor)
             .font(UIFontBuilder.init(kind: UIFontBuilder.Kind.lRegular).build())
